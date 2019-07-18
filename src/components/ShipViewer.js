@@ -28,12 +28,14 @@ export default class ShipViewer extends Component {
                 <div className="ship-stuff">
                     {this.props.ships.map(ele => {return <li key={ele.id} onClick={() => this.selectShip(ele.id)}>{ele.name}</li>})}
                     {this.state.showShip ? (
-                    <div className="ship-display">{this.props.ships[this.state.index].name}</div>
+                        <div>
+                            <div className="ship-display">{this.props.ships[this.state.index].name}</div>
+                            <ShipDesigner hulls={this.props.hulls} parts={this.props.parts}/>
+                        </div>
                     ): 
                     (<div className="ship-display">Select a ship!</div>)}
                 </div>
                 <div className="ship-designer">
-                    <ShipDesigner hulls={this.props.hulls} parts={this.props.parts}/>
                 </div>
             </div>
         )

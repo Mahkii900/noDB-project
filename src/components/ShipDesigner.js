@@ -6,7 +6,8 @@ export default class ShipDesigner extends Component {
         super()
         this.state = {
             showSlots: false,
-            index: 0
+            index: 0,
+            showParts: false
         }
     }
 
@@ -15,6 +16,11 @@ export default class ShipDesigner extends Component {
         const index = this.props.hulls.findIndex(ele => ele.name === name)
         this.setState({showSlots: true, index: index})
     }
+
+    /*partsShowing() {
+        this.setState({showParts: true})
+    }*/
+
     render() {
         const hulls  = this.props.hulls
         return(
@@ -22,8 +28,7 @@ export default class ShipDesigner extends Component {
                 {hulls.map(ele => {return <li key={ele.name} onClick={() => this.selectedHull(ele.name)}>{ele.name}</li>})}
                 {this.state.showSlots ? 
                 (<div>
-                    {hulls[this.state.index].slots.map(ele => {return <div key={ele}>{ele}</div>})}
-                    <Design parts={this.props.parts}/>
+                    <Design parts={this.props.parts} slots={hulls[this.state.index]}/>
                 </div>
                 ) : <div>Select a hull!</div>
                 }
