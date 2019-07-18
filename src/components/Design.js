@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 
-export default class Design extends Component {
+export default class Ship extends Component {
     render() {
         return(
             <div>
-                Design
+                {this.props.parts.map(ele => {return <li key={ele}>{ele}</li>})}
             </div>
         )
     }

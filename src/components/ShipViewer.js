@@ -1,28 +1,39 @@
 import React, {Component} from 'react'
-import Ship from './Ship'
+
 import ShipDesigner from './ShipDesigner'
 
 export default class ShipViewer extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            id: null
+            index: 0,
+            id: null,
+            showShip: false,
+            editing: false
         }
-        //this.viewOneShip = this.viewOneShip.bind(this)
+    }
+
+    indexFinder(id) {
+        this.setState({index: this.props.ships.findIndex(ele => ele.id === id)})
     }
 
     selectShip(id) {
-        this.setState({id: id})
+        this.setState({id: id, showShip: true})
+        this.indexFinder(id)
     }
 
     render() {
         return(
-            <div>
-                <div className="ship-list">
-                    {this.props.ships.map(ele => {return <div key={ele} onClick={}>{ele}</div>})}
+            <div className="ship-console">
+                <div className="ship-stuff">
+                    {this.props.ships.map(ele => {return <li key={ele.id} onClick={() => this.selectShip(ele.id)}>{ele.name}</li>})}
+                    {this.state.showShip ? (
+                    <div className="ship-display">{this.props.ships[this.state.index].name}</div>
+                    ): 
+                    (<div className="ship-display">Select a ship!</div>)}
                 </div>
                 <div className="ship-designer">
-                    <ShipDesigner/>
+                    <ShipDesigner hulls={this.props.hulls} parts={this.props.parts}/>
                 </div>
             </div>
         )
