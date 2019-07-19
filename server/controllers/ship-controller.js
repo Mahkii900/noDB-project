@@ -1,17 +1,25 @@
 let ships = [
     {name: 'ship1',
     id: 1,
-    hull: {
-        name: "hull1",
-        slots: ['engine', 'electrical', 'mechanical']
-        }
+    hull: {name: "hull1",
+        slots: [
+            {name: 'engine', type: 'engine'},
+            {name: 'electrical', type: 'electrical'},
+            {name: 'mechanical', type: 'mechanical'}
+        ]
+    }
     },
     {name: 'ship2',
     id: 2,
-    hull: {
-        name: "hull2",
-        slots: ['engine', 'electrical', 'mechanical', 'weapons', 'shields']
-        }
+    hull: {name: "hull2",
+        slots: [
+            {name: 'engine', type: 'engine'},
+            {name: 'electrical', type: 'electrical'},
+            {name: 'mechanical', type: 'mechanical'},
+            {name: 'weapons', type: 'weapons'},
+            {name: 'shields', type: 'shields'}
+        ]
+    }
     }
 ]
 let id = 3;

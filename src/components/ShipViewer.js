@@ -74,7 +74,8 @@ export default class ShipViewer extends Component {
                             <div className="editing-console">
                                 <div>
                                     {this.props.ships[this.state.index].name}
-                                    {this.props.ships[this.state.index].hull.slots.map(ele => {return <li key={ele} onClick={() => this.sortParts(ele)}>{ele}</li>})}
+                                    {console.log(this.props.ships[this.state.index].hull.slots)}
+                                    {this.props.ships[this.state.index].hull.slots.map(ele => {return <li key={ele.name} onClick={() => this.sortParts(ele.type)}>{ele.name}</li>})}
                                 </div>
                                 <div>
                                     {this.state.editing ? (

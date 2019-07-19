@@ -8,7 +8,6 @@ export default class ShipSlots extends Component {
     }
 
     updateSlots(hull) {
-        console.log(hull)
         this.props.updateShip(this.props.shipID, hull)
     }
 
