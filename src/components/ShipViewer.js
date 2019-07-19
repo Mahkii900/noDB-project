@@ -79,7 +79,9 @@ export default class ShipViewer extends Component {
                                 <button onClick={() => this.showAdd()}>Cancel</button>
                             </div>
                         ): null}
-                        {this.props.ships.map(ele => {return <li key={ele.id} onClick={() => this.selectShip(ele.id)}>{ele.name}</li>})}
+                        <div className='all-ships'>
+                            {this.props.ships.map(ele => {return <li key={ele.id} onClick={() => this.selectShip(ele.id)}>{ele.name}</li>})}
+                        </div>
                     </div>
                     <div className="ship-designing">
                         {this.state.showShip ? (
