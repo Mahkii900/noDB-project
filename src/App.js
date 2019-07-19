@@ -10,10 +10,13 @@ class App extends Component {
     this.state = {
       ships: [],
       hulls: [],
-      parts: []
+      parts: [],
+      partsOfType: []
     }
 
     this.addNewShip = this.addNewShip.bind(this)
+    this.getPartsOfType = this.getPartsOfType.bind(this)
+    this.updateShip = this.updateShip.bind(this)
   }
 
   componentDidMount() {
@@ -34,11 +37,35 @@ class App extends Component {
     })
   }
 
+  getPartsOfType(type) {
+    axios.get(`/api/parts/${type}`).then(res => {
+      this.setState({partsOfType: res.data})
+    })
+  }
+
+  updateShip(id, newInfo) {
+    axios.put(`/api/ships/${id}`, newInfo).then(res => {
+      this.setState({ships: res.data})
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Header/>
-        <ShipViewer ships={this.state.ships} hulls={this.state.hulls} parts={this.state.parts} addShip={this.addNewShip}/>
+        <div className="header">
+          <Header/>
+        </div>
+        <div className="ship-display">
+          <ShipViewer
+            ships={this.state.ships}
+            hulls={this.state.hulls}
+            parts={this.state.parts}
+            addShip={this.addNewShip}
+            getParts={this.getPartsOfType}
+            partTypes={this.state.partsOfType}
+            updateShip={this.updateShip}
+          />
+        </div>
       </div>
     );
   }

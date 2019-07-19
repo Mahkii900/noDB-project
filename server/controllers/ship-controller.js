@@ -29,5 +29,12 @@ module.exports = {
         ships.push({...req.body, id: id, hull: hull})
         id++
         res.status(200).send(ships)
+    },
+
+    updateShip: (req, res) => {
+        const {id} = req.params
+        const index = ships.findIndex(ele => ele.id === +id)
+        ships[index] = {...ships[index], ...req.body}
+        res.status(200).send(ships)
     }
 }
