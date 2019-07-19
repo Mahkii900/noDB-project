@@ -18,9 +18,7 @@ export default class Ship extends Component {
     }
 
     createHullUpdate(part) {
-        let newHull = {hull: [...this.props.slots]}
-        newHull.hull.splice(newHull.hull.findIndex(ele => ele.type === part.type), 1, part)
-        this.updateSlots(newHull)
+        
     }
 
     updateSlots(hull) {

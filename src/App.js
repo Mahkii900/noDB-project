@@ -17,6 +17,7 @@ class App extends Component {
     this.addNewShip = this.addNewShip.bind(this)
     this.getPartsOfType = this.getPartsOfType.bind(this)
     this.updateShip = this.updateShip.bind(this)
+    this.deleteShip = this.deleteShip.bind(this)
   }
 
   componentDidMount() {
@@ -49,6 +50,12 @@ class App extends Component {
     })
   }
 
+  deleteShip(id) {
+    axios.delete(`/api/ships/${id}`).then(res => {
+      this.setState({ships: res.data})
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -64,6 +71,7 @@ class App extends Component {
             getParts={this.getPartsOfType}
             partTypes={this.state.partsOfType}
             updateShip={this.updateShip}
+            delete={this.deleteShip}
           />
         </div>
       </div>

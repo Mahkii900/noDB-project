@@ -42,6 +42,7 @@ export default class ShipViewer extends Component {
 
     addAShip(name) {
         this.props.addShip(name)
+        this.setState({shipName: 'New Name'})
         this.showAdd()
     }
 
@@ -52,6 +53,13 @@ export default class ShipViewer extends Component {
     sortParts(type) {
         this.props.getParts(type)
         this.showParts()
+    }
+
+    deleteShip() {
+        const id = this.props.ships[this.state.index].id
+        this.showEdit()
+        this.setState({showShip: false})
+        this.props.delete(id)
     }
 
     render() {
@@ -74,7 +82,6 @@ export default class ShipViewer extends Component {
                             <div className="editing-console">
                                 <div>
                                     {this.props.ships[this.state.index].name}
-                                    {console.log(this.props.ships[this.state.index].hull.slots)}
                                     {this.props.ships[this.state.index].hull.slots.map(ele => {return <li key={ele.name} onClick={() => this.sortParts(ele.type)}>{ele.name}</li>})}
                                 </div>
                                 <div>
@@ -94,6 +101,7 @@ export default class ShipViewer extends Component {
                                             {this.state.showParts ? <div>
                                                 <ShipSlots
                                                     slots={this.props.ships[this.state.index].hull.slots}
+                                                    hullClass={this.props.ships[this.state.index].hull.class}
                                                     partsType={this.props.partTypes}
                                                     updateShip={this.props.updateShip}
                                                     shipID={this.props.ships[this.state.index].id}
@@ -101,6 +109,7 @@ export default class ShipViewer extends Component {
                                             </div> : <div>Select A Slot</div>}
                                         </div>
                                         <button onClick={() => this.showEdit()}>Save</button>
+                                        <button onClick={() => this.deleteShip()}>Delete This Ship</button>
                                     </div>
                                     ): <button onClick={() => this.showEdit()}>Edit</button>}
                                 </div>

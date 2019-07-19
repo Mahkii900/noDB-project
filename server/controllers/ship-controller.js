@@ -1,7 +1,7 @@
 let ships = [
     {name: 'ship1',
     id: 1,
-    hull: {name: "hull1",
+    hull: {class: "hull1",
         slots: [
             {name: 'engine', type: 'engine'},
             {name: 'electrical', type: 'electrical'},
@@ -11,7 +11,19 @@ let ships = [
     },
     {name: 'ship2',
     id: 2,
-    hull: {name: "hull2",
+    hull: {class: "hull2",
+        slots: [
+            {name: 'engine', type: 'engine'},
+            {name: 'electrical', type: 'electrical'},
+            {name: 'mechanical', type: 'mechanical'},
+            {name: 'weapons', type: 'weapons'},
+            {name: 'shields', type: 'shields'}
+        ]
+    }
+    },
+    {name: 'ship3',
+    id: 3,
+    hull: {class: "hull2",
         slots: [
             {name: 'engine', type: 'engine'},
             {name: 'electrical', type: 'electrical'},
@@ -22,10 +34,13 @@ let ships = [
     }
     }
 ]
-let id = 3;
-let hull = {
-    name: "hull1",
-    slots: ['engine', 'electrical', 'mechanical']
+let id = 4;
+let hull = {class: "hull1",
+    slots: [
+        {name: 'engine', type: 'engine'},
+        {name: 'electrical', type: 'electrical'},
+        {name: 'mechanical', type: 'mechanical'}
+    ]
 }
 
 module.exports = {
@@ -43,6 +58,13 @@ module.exports = {
         const {id} = req.params
         const index = ships.findIndex(ele => ele.id === +id)
         ships[index] = {...ships[index], ...req.body}
+        res.status(200).send(ships)
+    },
+
+    deleteShip: (req, res) => {
+        const {id} = req.params
+        const index = ships.findIndex(ele => ele.id === +id)
+        ships.splice(index, 1)
         res.status(200).send(ships)
     }
 }

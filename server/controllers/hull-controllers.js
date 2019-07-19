@@ -1,12 +1,12 @@
 let hulls = [
-    {name: "hull1",
+    {class: "hull1",
     slots: [
         {name: 'engine', type: 'engine'},
         {name: 'electrical', type: 'electrical'},
         {name: 'mechanical', type: 'mechanical'}
         ]
     },
-    {name: "hull2",
+    {class: "hull2",
     slots: [
         {name: 'engine', type: 'engine'},
         {name: 'electrical', type: 'electrical'},

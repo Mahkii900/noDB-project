@@ -11,6 +11,7 @@ app.use(express.json())
 app.get('/api/ships', shipCtrl.getAllShips)
 app.post('/api/ships', shipCtrl.addNewShip)
 app.put('/api/ships/:id', shipCtrl.updateShip)
+app.delete('/api/ships/:id', shipCtrl.deleteShip)
 
 //endpoints for hulls
 app.get('/api/hulls', hullCtrl.getAllHulls)

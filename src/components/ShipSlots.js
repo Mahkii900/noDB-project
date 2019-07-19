@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 
 export default class ShipSlots extends Component {
     createHullUpdate(part) {
-        let newHull = {hull: [...this.props.slots]}
-        newHull.hull.splice(newHull.hull.findIndex(ele => ele.type === part.type), 1, part)
-        this.updateSlots(newHull)
+        let hull = {class: this.props.hullClass, slots: this.props.slots}
+        hull.slots.splice(hull.slots.findIndex(ele => part.type === ele.type), 1, part)
+        this.updateSlots({hull})
     }
 
     updateSlots(hull) {
