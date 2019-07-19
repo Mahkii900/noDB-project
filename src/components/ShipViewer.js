@@ -75,10 +75,10 @@ export default class ShipViewer extends Component {
                                 <div>
                                     {this.props.ships[this.state.index].name}
                                     {this.props.ships[this.state.index].hull.slots.map(ele => {return <li key={ele} onClick={() => this.sortParts(ele)}>{ele}</li>})}
-                                    <button onClick={() => this.showEdit()}>Edit</button>
                                 </div>
-                                {this.state.editing ? (
-                                    <div>
+                                <div>
+                                    {this.state.editing ? (
+                                        <div>
                                         <div>
                                             <ShipDesigner
                                                 hulls={this.props.hulls}
@@ -86,19 +86,23 @@ export default class ShipViewer extends Component {
                                                 getParts={this.props.getParts}
                                                 partsType={this.props.partTypes}
                                                 updateShip={this.props.updateShip}
+                                                shipID={this.props.ships[this.state.index].id}
                                             />
                                         </div>
                                         <div>
                                             {this.state.showParts ? <div>
                                                 <ShipSlots
-                                                partsType={this.props.partTypes}
-                                                updateShip={this.props.updateShip}
+                                                    slots={this.props.ships[this.state.index].hull.slots}
+                                                    partsType={this.props.partTypes}
+                                                    updateShip={this.props.updateShip}
+                                                    shipID={this.props.ships[this.state.index].id}
                                                 />
                                             </div> : <div>Select A Slot</div>}
                                         </div>
                                         <button onClick={() => this.showEdit()}>Save</button>
                                     </div>
-                                ): null}
+                                    ): <button onClick={() => this.showEdit()}>Edit</button>}
+                                </div>
                             </div>
                         ): (<div>Select A Ship</div>)}
                     </div>

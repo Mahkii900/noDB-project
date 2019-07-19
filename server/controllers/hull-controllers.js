@@ -1,8 +1,20 @@
 let hulls = [
     {name: "hull1",
-    slots: ['engine', 'electrical', 'mechanical']},
+    slots: [
+        {name: 'engine', type: 'engine'},
+        {name: 'electrical', type: 'electrical'},
+        {name: 'mechanical', type: 'mechanical'}
+        ]
+    },
     {name: "hull2",
-    slots: ['engine', 'electrical', 'mechanical', 'weapons', 'shields']}
+    slots: [
+        {name: 'engine', type: 'engine'},
+        {name: 'electrical', type: 'electrical'},
+        {name: 'mechanical', type: 'mechanical'},
+        {name: 'weapons', type: 'weapons'},
+        {name: 'shields', type: 'shields'}
+        ]
+    }
 ]
 
 module.exports = {
