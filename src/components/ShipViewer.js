@@ -62,10 +62,14 @@ export default class ShipViewer extends Component {
         this.props.delete(id)
     }
 
+    changeShipName(id, name) {
+        this.props.updateShip(id, {name: name})
+        this.setState({shipName: 'New Name'})
+    }
+
     render() {
         return(
             <div className="ship-console">
-                <div className="ship-stuff">
                     <div className="ship-list">
                         <button onClick={() => this.showAdd()}>Add Ship</button>
                         {this.state.adding ? (
@@ -87,6 +91,8 @@ export default class ShipViewer extends Component {
                                 <div>
                                     {this.state.editing ? (
                                         <div>
+                                            <input type='text' value={this.state.shipName} onChange={(e) => this.inputChangeHandler(e)}/>
+                                            <button onClick={() => this.changeShipName(this.state.id, this.state.shipName)}>Change Ship Name</button>
                                         <div>
                                             <ShipDesigner
                                                 hulls={this.props.hulls}
@@ -116,8 +122,7 @@ export default class ShipViewer extends Component {
                             </div>
                         ): (<div>Select A Ship</div>)}
                     </div>
-                </div> 
-            </div>
+            </div> 
         )
     }
 }
