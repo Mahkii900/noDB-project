@@ -30,6 +30,10 @@ export default class ShipViewer extends Component {
         this.setState({adding: !this.state.adding})
     }
 
+    showEdit() {
+        this.setState({editing: !this.state.editing})
+    }
+
     inputChangeHandler(e) {
         this.setState({shipName: e.target.value})
     }
@@ -57,7 +61,14 @@ export default class ShipViewer extends Component {
                     {this.state.showShip ? (
                         <div>
                             <div className="ship-display">{this.props.ships[this.state.index].name}</div>
-                            <ShipDesigner hulls={this.props.hulls} parts={this.props.parts}/>
+                            {this.props.ships[this.state.index].hull.slots.map(ele => {return <li key={ele}>{ele}</li>})}
+                            <button onClick={() => this.showEdit()}>Edit</button>
+                            {this.state.editing ? (
+                                <div>
+                                    <ShipDesigner hulls={this.props.hulls} parts={this.props.parts}/>
+                                    <button onClick={() => this.showEdit()}>Save</button>
+                                </div>
+                            ): null}
                         </div>
                     ): 
                     (<div className="ship-display">Select a ship!</div>)}
