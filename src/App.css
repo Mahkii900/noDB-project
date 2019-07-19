@@ -1,16 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Squada+One&display=swap');
+
 body, html {
-  background: gray;
+  background: #4d7c8a;
   margin: none;
 }
 
 .header-two {
   margin: none;
-  background: navy;
+  background: #2c2a4a;
   height: 10vh;
   width: 100;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .header-two > h2 {
+  font-family: 'Squada One', cursive;
+  font-style: italic;
+  font-size: 8vh;
+  color: #42f2f7;
+  text-align: center;
   margin: 0;
 }
 
