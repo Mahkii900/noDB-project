@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
 
 export default class ShipSlots extends Component {
-    createHullUpdate(part) {
+    //This is necessary in order to allow updateShip to work
+    //It takes the selected part and puts it in the selected equipment slot
+    //and gives updateSlots an object with a hull object inside
+    createHullForUpdate(part) {
         let hull = {class: this.props.hullClass, slots: this.props.slots}
         hull.slots.splice(hull.slots.findIndex(ele => part.type === ele.type), 1, part)
         this.updateSlots({hull})

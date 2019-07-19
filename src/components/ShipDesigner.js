@@ -25,12 +25,10 @@ export default class ShipDesigner extends Component {
                 {this.state.showSlots ? 
                 (<div>
                     <Design
-                        parts={this.props.parts}
                         slots={hulls[this.state.index].slots}
-                        getParts={this.props.getParts}
-                        partsType={this.props.partsType}
                         updateShip={this.props.updateShip}
                         shipID={this.props.shipID}
+                        hull={hulls[this.state.index]}
                     />
                 </div>
                 ) : <div>Select A Hull</div>
