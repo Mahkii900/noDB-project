@@ -9,6 +9,7 @@ app.use(express.json())
 
 //endpoints for ships
 app.get('/api/ships', shipCtrl.getAllShips)
+app.post('/api/ships', shipCtrl.addNewShip)
 
 //endpoints for hulls
 app.get('/api/hulls', hullCtrl.getAllHulls)

@@ -8,8 +8,7 @@ export default class ShipViewer extends Component {
         this.state = {
             index: 0,
             id: null,
-            showShip: false,
-            editing: false
+            showShip: false
         }
     }
 
@@ -35,8 +34,7 @@ export default class ShipViewer extends Component {
                     ): 
                     (<div className="ship-display">Select a ship!</div>)}
                 </div>
-                <div className="ship-designer">
-                </div>
+                
             </div>
         )
     }

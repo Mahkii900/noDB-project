@@ -28,7 +28,7 @@ export default class ShipDesigner extends Component {
                 {hulls.map(ele => {return <li key={ele.name} onClick={() => this.selectedHull(ele.name)}>{ele.name}</li>})}
                 {this.state.showSlots ? 
                 (<div>
-                    <Design parts={this.props.parts} slots={hulls[this.state.index]}/>
+                    <Design parts={this.props.parts} slots={hulls[this.state.index].slots}/>
                 </div>
                 ) : <div>Select a hull!</div>
                 }

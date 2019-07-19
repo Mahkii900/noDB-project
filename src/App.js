@@ -12,6 +12,8 @@ class App extends Component {
       hulls: [],
       parts: []
     }
+
+    this.addNewShip = this.addNewShip.bind(this)
   }
 
   componentDidMount() {
@@ -26,11 +28,17 @@ class App extends Component {
     })
   }
 
+  addNewShip(name) {
+    axios.post('/api/ships', {name: name}).then(res => {
+      this.setState({ships: res.data})
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Header/>
-        <ShipViewer ships={this.state.ships} hulls={this.state.hulls} parts={this.state.parts}/>
+        <ShipViewer ships={this.state.ships} hulls={this.state.hulls} parts={this.state.parts} addShip={this.addNewShip}/>
       </div>
     );
   }
