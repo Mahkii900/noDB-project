@@ -26,6 +26,7 @@ body, html {
 
 .ship-console {
   height: 90vh;
+  background: linear-gradient(to bottom, #2c2a4a, #4d7c8a);
   display: flex;
 }
 
@@ -38,30 +39,47 @@ body, html {
   list-style: none;
 }
 
+.ship-list input {
+  margin: 3px;
+  padding: 2px;
+  border: 2px solid #2c2a4a;
+  border-radius: 4px;
+}
+
 .ship-list button {
   background: #2c2a4a;
   padding: 5px;
-  border: none;
+  border: 1px #42f2f7 outset;
   color: #42f2f7;
   font-family: "Squada One", cursive;
   font-size: 30px;
   border-radius: 10px 20px;
+  margin: 3px;
+}
+
+#add-button {
+  font-size: 20px;
 }
 
 .all-ships li{
   background: #42f2f7;
   margin: 15px;
+  padding: 2px;
   text-align: center;
   font-family: 'Squada One', cursive;
   font-size: 20px;
+  border: 2px solid #2c2a4a;
+  border-radius: 5px;
 }
 
 .ship-designing {
   padding: 2%;
-  width: 82%;
+  width: 78%;
+  background: #4d7c8a;
   display: flex;
   justify-content: space-between;
-  border-left: 5px solid #2c2a4a;
+  border: 5px solid #2c2a4a;
+  border-bottom: none;
   font-family: 'Squada One', cursive;
   font-size: 40px;
   font-style: italic;   

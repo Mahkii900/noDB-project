@@ -13,7 +13,7 @@ export default class ShipViewer extends Component {
             editing: false,
             adding: false,
             showParts: false,
-            shipName: 'New Name'
+            shipName: 'Ship Name'
         }
 
         this.addAShip = this.addAShip.bind(this)
@@ -47,7 +47,7 @@ export default class ShipViewer extends Component {
 
     addAShip(name) {
         this.props.addShip(name)
-        this.setState({shipName: 'New Name'})
+        this.setState({shipName: 'Ship Name'})
         this.showAdd()
     }
 
@@ -69,7 +69,7 @@ export default class ShipViewer extends Component {
 
     changeShipName(id, name) {
         this.props.updateShip(id, {name: name})
-        this.setState({shipName: 'New Name'})
+        this.setState({shipName: 'Ship Name'})
     }
 
     render() {
@@ -79,8 +79,8 @@ export default class ShipViewer extends Component {
                         {this.state.adding ? (
                             <div>
                                 <input type='text' value={this.state.shipName} onChange={(e) => this.inputChangeHandler(e)}/>
-                                <button onClick={() => this.addAShip(this.state.shipName)}>Add Ship</button>
-                                <button onClick={() => this.showAdd()}>Cancel</button>
+                                <button id="add-button" onClick={() => this.addAShip(this.state.shipName)}>Add Ship</button>
+                                <button id='add-button' onClick={() => this.showAdd()}>Cancel</button>
                             </div>
                         ): <button onClick={() => this.showAdd()}>Add Ship</button>}
                         <div className='all-ships'>
