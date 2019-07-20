@@ -24,8 +24,10 @@ export default class ShipViewer extends Component {
     }
 
     selectShip(id) {
-        this.setState({id: id, showShip: true})
-        this.indexFinder(id)
+        if (!this.state.editing) {
+            this.setState({id: id, showShip: true})
+            this.indexFinder(id)
+        }
     }
 
     showAdd() {
@@ -34,6 +36,9 @@ export default class ShipViewer extends Component {
 
     showEdit() {
         this.setState({editing: !this.state.editing})
+        if (this.state.showParts) {
+            this.setState({showParts: false})
+        }
     }
 
     inputChangeHandler(e) {
@@ -71,14 +76,13 @@ export default class ShipViewer extends Component {
         return(
             <div className="ship-console">
                     <div className="ship-list">
-                        <button onClick={() => this.showAdd()}>Add Ship</button>
                         {this.state.adding ? (
                             <div>
                                 <input type='text' value={this.state.shipName} onChange={(e) => this.inputChangeHandler(e)}/>
                                 <button onClick={() => this.addAShip(this.state.shipName)}>Add Ship</button>
                                 <button onClick={() => this.showAdd()}>Cancel</button>
                             </div>
-                        ): null}
+                        ): <button onClick={() => this.showAdd()}>Add Ship</button>}
                         <div className='all-ships'>
                             {this.props.ships.map(ele => {return <li key={ele.id} onClick={() => this.selectShip(ele.id)}>{ele.name}</li>})}
                         </div>
