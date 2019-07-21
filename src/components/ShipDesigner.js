@@ -16,11 +16,17 @@ export default class ShipDesigner extends Component {
         this.setState({showSlots: true, index: index})
     }
 
+    listHulls(ele) {
+        if (this.props.currentHull !== ele.class) {
+            return (<li key={ele.class} onClick={() => this.selectedHull(ele.class)}>{ele.class}</li>)
+        }
+    }
+
     render() {
         const hulls  = this.props.hulls
         return(
             <div>
-                {hulls.map(ele => {if (this.props.currentHull != ele.class){return <li key={ele.class} onClick={() => this.selectedHull(ele.class)}>{ele.class}</li>}})}
+                {hulls.map(ele => this.listHulls(ele))}
                 {this.state.showSlots ? 
                 (<div>
                     <Design
@@ -28,6 +34,9 @@ export default class ShipDesigner extends Component {
                         updateShip={this.props.updateShip}
                         shipID={this.props.shipID}
                         hull={hulls[this.state.index]}
+                        edit={this.props.edit}
+                        cancelHull={this.props.cancelHull}
+                        shipHull={this.props.shipHull}
                     />
                 </div>
                 ) : <div>Select A Hull</div>

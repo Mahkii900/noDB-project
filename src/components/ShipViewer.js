@@ -13,6 +13,7 @@ export default class ShipViewer extends Component {
             editing: false,
             adding: false,
             showParts: false,
+            didEdit: false,
             shipName: '',
             ship: {},
             hull: {},
@@ -21,6 +22,8 @@ export default class ShipViewer extends Component {
 
         this.addAShip = this.addAShip.bind(this)
         this.cancelSlotChanges = this.cancelSlotChanges.bind(this)
+        this.cancelHullChanges = this.cancelHullChanges.bind(this)
+        this.didEdit = this.didEdit.bind(this)
     }
 
     indexFinder(id) {
@@ -76,16 +79,35 @@ export default class ShipViewer extends Component {
 
     changeShipName(id, name) {
         this.props.updateShip(id, {name: name})
+        this.didEdit()
+    }
+
+    didEdit() {
+        this.setState({didEdit: true})
     }
 
     cancelSlotChanges(slots) {
         this.setState({slots: slots})
     }
 
+    cancelHullChanges(hull) {
+        this.setState({hull: hull, slots: hull.slots})
+    }
+
     cancelChanges(id) {
-        let oldShip = {name: this.state.ship.name, hull: {...this.state.hull, slots: this.state.slots}}
-        this.props.updateShip(id, oldShip)
-        this.setState({shipName: this.state.ship.name})
+        if (this.state.didEdit) {
+            let oldShip = {name: this.state.ship.name, hull: this.state.hull}
+            for (let i = 0; i < oldShip.hull.slots.length; i++) {
+                for(let j = 0; j < this.state.slots.length; j++) {
+                    if (oldShip.hull.slots[i].type === this.state.slots[j].type){
+                        oldShip.hull.slots[i].name = this.state.slots[j].name
+                    }
+                }
+            }
+            this.props.updateShip(id, oldShip)
+            this.setState({shipName: this.state.ship.name})
+            this.setState({didEdit: false})
+        }
         this.showEdit()
     }
 
@@ -121,8 +143,8 @@ export default class ShipViewer extends Component {
                                 </div>
                                 <div className='edit-ship'>
                                     {this.state.editing ? (
-                                        <div>
-                                            <div>Change Ship Name: 
+                                        <div className='edit-ship-display'>
+                                            <div className='change-name'>Change Ship Name: 
                                                 <input type='text' value={this.state.shipName} onChange={(e) => this.inputChangeHandler(e)}/>
                                                 <button onClick={() => this.changeShipName(this.state.id, this.state.shipName)}>Change Ship Name</button>
                                             </div>
@@ -135,6 +157,9 @@ export default class ShipViewer extends Component {
                                                 updateShip={this.props.updateShip}
                                                 shipID={this.props.ships[this.state.index].id}
                                                 currentHull={this.props.ships[this.state.index].hull.class}
+                                                edit={this.didEdit}
+                                                cancelHull={this.cancelHullChanges}
+                                                shipHull={this.props.ships[this.state.index].hull}
                                             />
                                             </div>
                                             <div>
@@ -147,13 +172,14 @@ export default class ShipViewer extends Component {
                                                     shipID={this.props.ships[this.state.index].id}
                                                     ship={this.props.ships[this.state.index]}
                                                     saveSlots={this.cancelSlotChanges}
+                                                    edit={this.didEdit}
                                                 />
                                                 </div> : <div>Select A Slot</div>}
                                             </div>
                                             <button onClick={() => this.showEdit()}>Save</button>
                                             <button onClick={() => this.cancelChanges(this.state.ship.id)}>Cancel</button>
                                             <button onClick={() => this.deleteShip()}>Delete This Ship</button>
-                                    </div>
+                                        </div>
                                     ): null}
                                 </div>
                             </div>

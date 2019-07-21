@@ -4,6 +4,7 @@ export default class ShipSlots extends Component {
     cancelSlotUpdate(part) {
         let slots = this.props.ship.hull.slots.slice()
         this.props.saveSlots(slots)
+        this.props.edit()
         this.createHullUpdate(part)
     }
 
