@@ -20,6 +20,7 @@ export default class ShipViewer extends Component {
         }
 
         this.addAShip = this.addAShip.bind(this)
+        this.cancelSlotChanges = this.cancelSlotChanges.bind(this)
     }
 
     indexFinder(id) {
@@ -39,8 +40,7 @@ export default class ShipViewer extends Component {
 
     showEdit() {
         if (!this.state.showEdit) {
-            console.log(this.props.ships[this.state.index].hull.slots)
-            this.setState({ship: this.props.ships[this.state.index], hull: this.props.ships[this.state.index].hull, slots: this.props.ships[this.state.index].hull.slots})
+            this.setState({ship: this.props.ships[this.state.index], hull: this.props.ships[this.state.index].hull})
         }
         this.setState({editing: !this.state.editing})
         if (this.state.showParts) {
@@ -78,10 +78,12 @@ export default class ShipViewer extends Component {
         this.props.updateShip(id, {name: name})
     }
 
+    cancelSlotChanges(slots) {
+        this.setState({slots: slots})
+    }
+
     cancelChanges(id) {
-        console.log(this.state.slots)
         let oldShip = {name: this.state.ship.name, hull: {...this.state.hull, slots: this.state.slots}}
-        console.log(this.state.hull)
         this.props.updateShip(id, oldShip)
         this.setState({shipName: this.state.ship.name})
         this.showEdit()
@@ -132,6 +134,7 @@ export default class ShipViewer extends Component {
                                                 partsType={this.props.partTypes}
                                                 updateShip={this.props.updateShip}
                                                 shipID={this.props.ships[this.state.index].id}
+                                                currentHull={this.props.ships[this.state.index].hull.class}
                                             />
                                             </div>
                                             <div>
@@ -142,6 +145,8 @@ export default class ShipViewer extends Component {
                                                     partsType={this.props.partTypes}
                                                     updateShip={this.props.updateShip}
                                                     shipID={this.props.ships[this.state.index].id}
+                                                    ship={this.props.ships[this.state.index]}
+                                                    saveSlots={this.cancelSlotChanges}
                                                 />
                                                 </div> : <div>Select A Slot</div>}
                                             </div>

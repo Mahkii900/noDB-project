@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
 
 export default class ShipSlots extends Component {
+    cancelSlotUpdate(part) {
+        let slots = this.props.ship.hull.slots.slice()
+        this.props.saveSlots(slots)
+        this.createHullUpdate(part)
+    }
+
     //This is necessary in order to allow updateShip to work
     //It takes the selected part and puts it in the selected equipment slot
     //and gives updateSlots an object with a hull object inside
@@ -17,7 +23,7 @@ export default class ShipSlots extends Component {
     render() {
         return(
             <div>
-                {this.props.partsType.map(ele => <li key={ele.name} onClick={() => this.createHullUpdate(ele)}>{ele.name}</li>)}
+                {this.props.partsType.map(ele => <li key={ele.name} onClick={() => this.cancelSlotUpdate(ele)}>{ele.name}</li>)}
             </div>
         )
     }
