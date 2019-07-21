@@ -26,9 +26,13 @@ export default class ShipDesigner extends Component {
         const hulls  = this.props.hulls
         return(
             <div>
-                {hulls.map(ele => this.listHulls(ele))}
+                <div className="edit-hull-list">
+                    <div className='edit-hull-list-title'>{'Hull Types (Select A Hull To See Equipment Slots)'}</div>
+                    {hulls.map(ele => this.listHulls(ele))}
+                </div>
                 {this.state.showSlots ? 
-                (<div>
+                (<div className='edit-hull-preview'>
+                    <div className='edit-hull-preview-title'>This Hull Type Has The Following Equipment Slots</div>
                     <Design
                         slots={hulls[this.state.index].slots}
                         updateShip={this.props.updateShip}
@@ -39,7 +43,7 @@ export default class ShipDesigner extends Component {
                         shipHull={this.props.shipHull}
                     />
                 </div>
-                ) : <div>Select A Hull</div>
+                ) : <div className='edit-hull-notice'>{'>>>Select A Hull Type To See Equipment Slots<<<'}</div>
                 }
             </div>
         )

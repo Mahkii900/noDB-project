@@ -148,7 +148,10 @@ export default class ShipViewer extends Component {
                                                 <input type='text' value={this.state.shipName} onChange={(e) => this.inputChangeHandler(e)}/>
                                                 <button onClick={() => this.changeShipName(this.state.id, this.state.shipName)}>Change Ship Name</button>
                                             </div>
-                                            <div>
+                                            <div className='edit-hull'>
+                                                <div className='edit-hull-title'>
+                                                    Change Hull Type:
+                                                </div>
                                             <ShipDesigner
                                                 hulls={this.props.hulls}
                                                 parts={this.props.parts}
