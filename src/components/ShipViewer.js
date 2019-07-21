@@ -7,13 +7,16 @@ export default class ShipViewer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            index: 0,
-            id: null,
+            index: null,
+            id: 0,
             showShip: false,
             editing: false,
             adding: false,
             showParts: false,
-            shipName: 'Ship Name'
+            shipName: '',
+            ship: {},
+            hull: {},
+            slots: []
         }
 
         this.addAShip = this.addAShip.bind(this)
@@ -23,18 +26,22 @@ export default class ShipViewer extends Component {
         this.setState({index: this.props.ships.findIndex(ele => ele.id === id)})
     }
 
-    selectShip(id) {
+    selectShip(id, name) {
         if (!this.state.editing) {
-            this.setState({id: id, showShip: true})
+            this.setState({id: id, showShip: true, shipName: name})
             this.indexFinder(id)
         }
     }
 
     showAdd() {
-        this.setState({adding: !this.state.adding})
+        this.setState({adding: !this.state.adding, shipName: ''})
     }
 
     showEdit() {
+        if (!this.state.showEdit) {
+            console.log(this.props.ships[this.state.index].hull.slots)
+            this.setState({ship: this.props.ships[this.state.index], hull: this.props.ships[this.state.index].hull, slots: this.props.ships[this.state.index].hull.slots})
+        }
         this.setState({editing: !this.state.editing})
         if (this.state.showParts) {
             this.setState({showParts: false})
@@ -47,7 +54,7 @@ export default class ShipViewer extends Component {
 
     addAShip(name) {
         this.props.addShip(name)
-        this.setState({shipName: 'Ship Name'})
+        this.setState({shipName: ''})
         this.showAdd()
     }
 
@@ -69,7 +76,15 @@ export default class ShipViewer extends Component {
 
     changeShipName(id, name) {
         this.props.updateShip(id, {name: name})
-        this.setState({shipName: 'Ship Name'})
+    }
+
+    cancelChanges(id) {
+        console.log(this.state.slots)
+        let oldShip = {name: this.state.ship.name, hull: {...this.state.hull, slots: this.state.slots}}
+        console.log(this.state.hull)
+        this.props.updateShip(id, oldShip)
+        this.setState({shipName: this.state.ship.name})
+        this.showEdit()
     }
 
     render() {
@@ -84,22 +99,32 @@ export default class ShipViewer extends Component {
                             </div>
                         ): <button onClick={() => this.showAdd()}>Add Ship</button>}
                         <div className='all-ships'>
-                            {this.props.ships.map(ele => {return <li key={ele.id} onClick={() => this.selectShip(ele.id)}>{ele.name}</li>})}
+                            {this.props.ships.map(ele => {return <li key={ele.id} onClick={() => this.selectShip(ele.id, ele.name)}>{ele.name}</li>})}
                         </div>
                     </div>
                     <div className="ship-designing">
                         {this.state.showShip ? (
                             <div className="editing-console">
-                                <div>
-                                    {this.props.ships[this.state.index].name}
-                                    {this.props.ships[this.state.index].hull.slots.map(ele => {return <li key={ele.name} onClick={() => this.sortParts(ele.type)}>{ele.name}</li>})}
+                                <div className='ship-info'>
+                                    <div>
+                                        <div className='ship-name'>
+                                            {this.props.ships[this.state.index].name}
+                                        </div>
+                                        {/*Maybe put image here*/}
+                                        <div className='ship-slots'>
+                                            {this.props.ships[this.state.index].hull.slots.map(ele => {return <li key={ele.name} onClick={() => this.sortParts(ele.type)}>{ele.type}: {ele.name}</li>})}
+                                        </div>
+                                    </div>
+                                    {this.state.editing ? null: <button id='edit-button' onClick={() => this.showEdit()}>Edit {this.props.ships[this.state.index].name}</button>}
                                 </div>
-                                <div>
+                                <div className='edit-ship'>
                                     {this.state.editing ? (
                                         <div>
-                                            <input type='text' value={this.state.shipName} onChange={(e) => this.inputChangeHandler(e)}/>
-                                            <button onClick={() => this.changeShipName(this.state.id, this.state.shipName)}>Change Ship Name</button>
-                                        <div>
+                                            <div>Change Ship Name: 
+                                                <input type='text' value={this.state.shipName} onChange={(e) => this.inputChangeHandler(e)}/>
+                                                <button onClick={() => this.changeShipName(this.state.id, this.state.shipName)}>Change Ship Name</button>
+                                            </div>
+                                            <div>
                                             <ShipDesigner
                                                 hulls={this.props.hulls}
                                                 parts={this.props.parts}
@@ -108,8 +133,8 @@ export default class ShipViewer extends Component {
                                                 updateShip={this.props.updateShip}
                                                 shipID={this.props.ships[this.state.index].id}
                                             />
-                                        </div>
-                                        <div>
+                                            </div>
+                                            <div>
                                             {this.state.showParts ? <div>
                                                 <ShipSlots
                                                     slots={this.props.ships[this.state.index].hull.slots}
@@ -118,15 +143,16 @@ export default class ShipViewer extends Component {
                                                     updateShip={this.props.updateShip}
                                                     shipID={this.props.ships[this.state.index].id}
                                                 />
-                                            </div> : <div>Select A Slot</div>}
-                                        </div>
-                                        <button onClick={() => this.showEdit()}>Save</button>
-                                        <button onClick={() => this.deleteShip()}>Delete This Ship</button>
+                                                </div> : <div>Select A Slot</div>}
+                                            </div>
+                                            <button onClick={() => this.showEdit()}>Save</button>
+                                            <button onClick={() => this.cancelChanges(this.state.ship.id)}>Cancel</button>
+                                            <button onClick={() => this.deleteShip()}>Delete This Ship</button>
                                     </div>
-                                    ): <button onClick={() => this.showEdit()}>Edit</button>}
+                                    ): null}
                                 </div>
                             </div>
-                        ): (<div>Select A Ship</div>)}
+                        ): (<div className='ship-name'>Select A Ship</div>)}
                     </div>
             </div> 
         )
