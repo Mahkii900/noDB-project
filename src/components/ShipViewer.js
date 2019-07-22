@@ -152,7 +152,11 @@ export default class ShipViewer extends Component {
                                         <div className='ship-picture'>
                                             <img src={ships[this.state.index].image} alt={ships[this.state.index].name}/>
                                         </div>
+                                        <div className='ship-class'>Hull Class: {ships[this.state.index].hull.class}</div>
                                         <div className='ship-slots'>
+                                            <div className='ship-equipment-info-title'>
+                                                Equipment
+                                            </div>
                                             {ships[this.state.index].hull.slots.map(ele => {return <li key={ele.name} onClick={() => this.sortParts(ele.type)}>{ele.type}: {ele.name}</li>})}
                                         </div>
                                     </div>

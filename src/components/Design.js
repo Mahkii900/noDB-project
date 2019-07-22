@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 export default class Ship extends Component {
     cancelHullChanges(newHull) {
+        this.props.hideSlots()
         this.props.cancelHull(this.props.shipHull)
         this.updateShip(newHull)
     }

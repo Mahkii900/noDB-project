@@ -1,36 +1,36 @@
 let hulls = [
     {class: "Scout",
     slots: [
-        {name: 'none', type: 'engine'},
-        {name: 'none', type: 'electrical'},
-        {name: 'none', type: 'mechanical'}
+        {name: 'engine', type: 'engine'},
+        {name: 'electrical', type: 'electrical'},
+        {name: 'mechanical', type: 'mechanical'}
         ]
     },
     {class: "Fighter",
     slots: [
-        {name: 'none', type: 'engine'},
-        {name: 'none', type: 'electrical'},
-        {name: 'none', type: 'mechanical'},
-        {name: 'none', type: 'weapons'},
-        {name: 'none', type: 'shields'}
+        {name: 'engine', type: 'engine'},
+        {name: 'electrical', type: 'electrical'},
+        {name: 'mechanical', type: 'mechanical'},
+        {name: 'weapons', type: 'weapons'},
+        {name: 'shields', type: 'shields'}
         ]
     },
     {class: "Battleship",
     slots: [
-        {name: 'none', type: 'engine'},
-        {name: 'none', type: 'electrical'},
-        {name: 'none', type: 'mechanical'},
-        {name: 'none', type: 'weapons'},
-        {name: 'none', type: 'shields'},
-        {name: 'none', type: 'armor'}
+        {name: 'engine', type: 'engine'},
+        {name: 'electrical', type: 'electrical'},
+        {name: 'mechanical', type: 'mechanical'},
+        {name: 'weapons', type: 'weapons'},
+        {name: 'shields', type: 'shields'},
+        {name: 'armor', type: 'armor'}
         ]
     },
     {class: "Freighter",
     slots: [
-        {name: 'none', type: 'engine'},
-        {name: 'none', type: 'mechanical'},
-        {name: 'none', type: 'shields'},
-        {name: 'none', type: 'armor'}
+        {name: 'engine', type: 'engine'},
+        {name: 'mechanical', type: 'mechanical'},
+        {name: 'shields', type: 'shields'},
+        {name: 'armor', type: 'armor'}
     ]
     }
 ]

@@ -9,6 +9,11 @@ export default class ShipDesigner extends Component {
             index: 0,
             showParts: false
         }
+        this.hideSlots = this.hideSlots.bind(this)
+    }
+
+    hideSlots() {
+        this.setState({showSlots: false})
     }
 
     selectedHull(type) {
@@ -44,6 +49,7 @@ export default class ShipDesigner extends Component {
                         edit={this.props.edit}
                         cancelHull={this.props.cancelHull}
                         shipHull={this.props.shipHull}
+                        hideSlots={this.hideSlots}
                     />
                 </div>
                 ) : <div className='edit-hull-notice'>{'>>>Select A Hull Type To See Equipment Slots<<<'}</div>

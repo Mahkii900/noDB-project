@@ -94,7 +94,6 @@ body, html {
 }
 
 .ship-info {
-  border: 1px solid #42f2f7;
   height: 100%;
   width: 40%;
   display: flex;
@@ -110,7 +109,6 @@ body, html {
 }
 
 .ship-picture {
-  border: 1px solid #2c2a4a;
   height: 15vh;
   margin-top: 10px;
 }
@@ -125,16 +123,29 @@ body, html {
   box-shadow: 0 0 3px #42f2f7;
 }
 
+.ship-class {
+  margin-top: 10px;
+  font-family: 'Squada One', cursive;
+  font-size: 30px;
+  text-shadow: 0 0 5px #42f2f7;
+}
+
 .ship-slots {
-  border: 1px solid black;
   justify-self: flex-start;
   font-family: 'Squada One', cursive;
   list-style: none;
   font-size: 30px;
 }
 
+.ship-equipment-info-title {
+  margin-top: 30px;
+  text-decoration: underline;
+  text-shadow: 0 0 5px #42f2f7;
+}
+
 .ship-slots li {
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
   text-transform: capitalize;
   text-shadow: 0 0 3px #42f2f7;
   cursor: pointer;
@@ -143,7 +154,7 @@ body, html {
 #edit-button {
   align-self: flex-start;
   border: 1px #42f2f7 inset;
-  margin-bottom: 30%;
+  margin-top: 3%;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
@@ -339,7 +350,7 @@ body, html {
 .equipment-part {
   margin-top: 1%;
   margin-left: 3%;
-  width: 27%;
+  width: 28%;
   list-style: none;
   background: #42f2f7;
   padding: 2px;
