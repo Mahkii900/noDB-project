@@ -1,4 +1,4 @@
-const images = require('../../image-files/spaceship-images')
+const images = require('./spaceship-images')
 
 let ships = [
     {name: 'Smaugarian Peeping Tom',
