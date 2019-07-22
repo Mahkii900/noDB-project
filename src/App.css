@@ -94,6 +94,7 @@ body, html {
 }
 
 .ship-info {
+  border: 1px solid #42f2f7;
   height: 100%;
   width: 40%;
   display: flex;
@@ -108,12 +109,28 @@ body, html {
   text-shadow: 0 0 5px #42f2f7;
 }
 
+.ship-picture {
+  border: 1px solid #2c2a4a;
+  height: 15vh;
+  margin-top: 10px;
+}
+
+.ship-picture img{
+  max-height: 100%;
+  width: auto;
+  background: white;
+  object-fit: contain;
+  border: 2px solid #2c2a4a;
+  border-radius: 10px 20px;
+  box-shadow: 0 0 3px #42f2f7;
+}
+
 .ship-slots {
+  border: 1px solid black;
   justify-self: flex-start;
   font-family: 'Squada One', cursive;
   list-style: none;
   font-size: 30px;
-  margin-top: 10px;
 }
 
 .ship-slots li {

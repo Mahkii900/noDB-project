@@ -32,8 +32,8 @@ class App extends Component {
     })
   }
 
-  addNewShip(name) {
-    axios.post('/api/ships', {name: name}).then(res => {
+  addNewShip(ship) {
+    axios.post('/api/ships', ship).then(res => {
       this.setState({ships: res.data})
     })
   }

@@ -1,5 +1,8 @@
+const images = require('../../image-files/spaceship-images')
+
 let ships = [
     {name: 'Smaugarian Peeping Tom',
+    image: images[0],
     id: 1,
     hull: {class: "Scout",
         slots: [
@@ -10,8 +13,9 @@ let ships = [
     }
     },
     {name: 'Space Hawk',
+    image: images[1],
     id: 2,
-    hull: {class: "Destroyer",
+    hull: {class: "Fighter",
         slots: [
             {name: 'Sub-Space Scoop', type: 'engine'},
             {name: 'Cloaking Device', type: 'electrical'},
@@ -22,6 +26,7 @@ let ships = [
     }
     },
     {name: 'Sun Bugle',
+    image: images[2],
     id: 3,
     hull: {class: "Freighter",
         slots: [

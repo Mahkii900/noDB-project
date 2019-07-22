@@ -15,6 +15,7 @@ export default class ShipViewer extends Component {
             showParts: false,
             didEdit: false,
             shipName: '',
+            shipImage: '',
             ship: {},
             hull: {},
             slots: []
@@ -53,13 +54,18 @@ export default class ShipViewer extends Component {
         }
     }
 
-    inputChangeHandler(e) {
+    inputShipNameHandler(e) {
         this.setState({shipName: e.target.value})
     }
 
-    addAShip(name) {
-        this.props.addShip(name)
-        this.setState({shipName: ''})
+    inputShipImageHandler(e) {
+        this.setState({shipImage: e.target.value})
+    }
+
+    addAShip(name, image) {
+        let newShip = {name: name, image: image}
+        this.props.addShip(newShip)
+        this.setState({shipName: '', shipImage: ''})
         this.showAdd()
     }
 
@@ -125,8 +131,9 @@ export default class ShipViewer extends Component {
                     <div className="ship-list">
                         {this.state.adding ? (
                             <div>
-                                <input type='text' value={shipName} onChange={(e) => this.inputChangeHandler(e)}/>
-                                <button id="add-button" onClick={() => this.addAShip(shipName)}>Add Ship</button>
+                                <input type='text' value={shipName} placeholder={'Ship Name'} onChange={(e) => this.inputShipNameHandler(e)}/>
+                                <input type='text' value={this.state.shipImage} placeholder={'Image URL'} onChange={(e) => this.inputShipImageHandler(e)}/>
+                                <button id="add-button" onClick={() => this.addAShip(shipName, this.state.shipImage)}>Add Ship</button>
                                 <button id='add-button' onClick={() => this.showAdd()}>Cancel</button>
                             </div>
                         ): <button onClick={() => this.showAdd()}>Add Ship</button>}
@@ -142,7 +149,9 @@ export default class ShipViewer extends Component {
                                         <div className='ship-name'>
                                             {ships[this.state.index].name}
                                         </div>
-                                        {/*Maybe put image here*/}
+                                        <div className='ship-picture'>
+                                            <img src={ships[this.state.index].image} alt={ships[this.state.index].name}/>
+                                        </div>
                                         <div className='ship-slots'>
                                             {ships[this.state.index].hull.slots.map(ele => {return <li key={ele.name} onClick={() => this.sortParts(ele.type)}>{ele.type}: {ele.name}</li>})}
                                         </div>
