@@ -40,7 +40,7 @@ export default class ShipDesigner extends Component {
                 </div>
                 {this.state.showSlots ? 
                 (<div className='edit-hull-preview'>
-                    <div className='edit-hull-preview-title'>This Hull Type Has The Following Equipment Slots</div>
+                    <div className='edit-hull-preview-title'>The {hulls[this.state.index].class} Hull Has The Following Equipment Slots</div>
                     <Design
                         slots={hulls[this.state.index].slots}
                         updateShip={this.props.updateShip}

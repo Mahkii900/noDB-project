@@ -191,6 +191,7 @@ body, html {
   border: 2px solid #2c2a4a;
   padding: 2px;
   border-radius: 24x;
+  box-shadow: 0 0 3px #42f2f7;
 }
 
 .change-name button {
@@ -262,7 +263,9 @@ body, html {
 }
 
 .edit-hull-preview {
-  height: 65%;
+  border: 1px solid #2c2a4a;
+  margin-top: 15px;
+  height: 60%;
   font-family: "Squada One", cursive;
   font-size: 25px;
   text-shadow: 0 0 2px #42f2f7;

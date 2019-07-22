@@ -21,38 +21,50 @@ class App extends Component {
   }
 
   componentDidMount() {
+    let error = {
+      name: "ERROR",
+      id: 0,
+      hull: {
+        class: "ERROR",
+        slots: [{name: 'ERROR', type: 'ERROR'}]
+      }
+    }
+
     axios.get('/api/ships').then(res => {
-      this.setState({ships: res.data})
-    })
+      this.setState({ships: res.data})        //Gets all ships
+    }).catch(() => {this.setState({ships: error})
+      alert('Unable to get ships!')})
     axios.get('/api/hulls').then(res => {
-      this.setState({hulls: res.data})
-    })
+      this.setState({hulls: res.data})      //Gets all hulls
+    }).catch(() => {this.setState({hulls: [{class: "ERROR", slots: [{name: 'ERROR', type: 'ERROR'}]}]})
+      alert('Unable to get hulls!')})
     axios.get('/api/parts').then(res => {
-      this.setState({parts: res.data})
-    })
+      this.setState({parts: res.data})      //Gets all parts
+    }).catch(() => {this.setState({parts: [{name: 'ERROR', type: 'ERROR'}]})
+      alert('Unable to get parts!')})
   }
 
   addNewShip(ship) {
     axios.post('/api/ships', ship).then(res => {
-      this.setState({ships: res.data})
+      this.setState({ships: res.data})      //Adds a new ship
     })
   }
 
   getPartsOfType(type) {
     axios.get(`/api/parts/${type}`).then(res => {
-      this.setState({partsOfType: res.data})
+      this.setState({partsOfType: res.data})    //Get a part by type
     })
   }
 
   updateShip(id, newInfo) {
     axios.put(`/api/ships/${id}`, newInfo).then(res => {
-      this.setState({ships: res.data})
+      this.setState({ships: res.data})          //Updates ship information
     })
   }
 
   deleteShip(id) {
     axios.delete(`/api/ships/${id}`).then(res => {
-      this.setState({ships: res.data})
+      this.setState({ships: res.data})          //Deletes a selected ship
     })
   }
 
