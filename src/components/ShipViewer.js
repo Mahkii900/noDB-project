@@ -41,7 +41,7 @@ export default class ShipViewer extends Component {
     }
 
     showAdd() {
-        this.setState({adding: !this.state.adding, shipName: ''})
+        this.setState({adding: !this.state.adding, shipName: '', shipImage: ''})
     }
 
     showEdit() {
