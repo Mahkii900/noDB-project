@@ -12,7 +12,8 @@ export default class ShipDesigner extends Component {
     }
 
     selectedHull(type) {
-        const index = this.props.hulls.findIndex(ele => ele.class === type)
+        let hulls = this.props.hulls
+        const index = hulls.findIndex(ele => ele.class === type)
         this.setState({showSlots: true, index: index})
     }
 
