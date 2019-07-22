@@ -1,41 +1,40 @@
 let ships = [
-    {name: 'ship1',
+    {name: 'Smaugarian Peeping Tom',
     id: 1,
-    hull: {class: "hull1",
+    hull: {class: "Scout",
         slots: [
-            {name: 'engine', type: 'engine'},
-            {name: 'electrical', type: 'electrical'},
-            {name: 'mechanical', type: 'mechanical'}
+            {name: 'Fuel Mizer', type: 'engine'},
+            {name: 'Scanner', type: 'electrical'},
+            {name: 'Maneuvering Jets', type: 'mechanical'}
         ]
     }
     },
-    {name: 'ship2',
+    {name: 'Space Hawk',
     id: 2,
-    hull: {class: "hull2",
+    hull: {class: "Destroyer",
         slots: [
-            {name: 'engine', type: 'engine'},
-            {name: 'electrical', type: 'electrical'},
-            {name: 'mechanical', type: 'mechanical'},
-            {name: 'weapons', type: 'weapons'},
-            {name: 'shields', type: 'shields'}
+            {name: 'Sub-Space Scoop', type: 'engine'},
+            {name: 'Cloaking Device', type: 'electrical'},
+            {name: 'Maneuvering Jets', type: 'mechanical'},
+            {name: 'Anti-Matter Beam', type: 'weapons'},
+            {name: 'Baryonic Repulsor', type: 'shields'}
         ]
     }
     },
-    {name: 'ship3',
+    {name: 'Sun Bugle',
     id: 3,
-    hull: {class: "hull2",
+    hull: {class: "Freighter",
         slots: [
-            {name: 'engine', type: 'engine'},
-            {name: 'electrical', type: 'electrical'},
-            {name: 'mechanical', type: 'mechanical'},
-            {name: 'weapons', type: 'weapons'},
-            {name: 'shields', type: 'shields'}
+            {name: 'Interstellar X', type: 'engine'},
+            {name: 'Cargo Bay', type: 'mechanical'},
+            {name: 'Gorilla Delegator', type: 'shields'},
+            {name: 'Carbon-Fiber Plating', type: 'armor'}
         ]
     }
     }
 ]
 let id = 4;
-let hull = {class: "hull1",
+let hull = {class: "Scout",
     slots: [
         {name: 'engine', type: 'engine'},
         {name: 'electrical', type: 'electrical'},

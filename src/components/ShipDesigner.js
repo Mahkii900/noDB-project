@@ -28,7 +28,7 @@ export default class ShipDesigner extends Component {
             <div>
                 <div className="edit-hull-list">
                     <div className='edit-hull-list-title'>{'Hull Types (Select A Hull To See Equipment Slots)'}</div>
-                    <div>
+                    <div className='all-hulls'>
                         {hulls.map(ele => this.listHulls(ele))}
                     </div>
                 </div>
