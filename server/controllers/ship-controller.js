@@ -8,7 +8,8 @@ let ships = [
         slots: [
             {name: 'Fuel Mizer', type: 'engine'},
             {name: 'Scanner', type: 'electrical'},
-            {name: 'Maneuvering Jets', type: 'mechanical'}
+            {name: 'Maneuvering Jets', type: 'mechanical'},
+            {name: 'Carbon-Fiber Plating', type: 'armor'}
         ]
     }
     },
@@ -43,7 +44,8 @@ let hull = {class: "Scout",
     slots: [
         {name: 'engine', type: 'engine'},
         {name: 'electrical', type: 'electrical'},
-        {name: 'mechanical', type: 'mechanical'}
+        {name: 'mechanical', type: 'mechanical'},
+        {name: 'armor', type: 'armor'}
     ]
 }
 

@@ -3,7 +3,8 @@ let hulls = [
     slots: [
         {name: 'engine', type: 'engine'},
         {name: 'electrical', type: 'electrical'},
-        {name: 'mechanical', type: 'mechanical'}
+        {name: 'mechanical', type: 'mechanical'},
+        {name: 'armor', type: 'armor'}
         ]
     },
     {class: "Fighter",

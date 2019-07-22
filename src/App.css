@@ -208,20 +208,23 @@ body, html {
 }
 
 .edit-hull {
-  height: 50%;
+  height: 45%;
   display: flex;
   flex-direction: column;
-}
-
-.edit-hull-list {
-  height: 58%;
-  margin-bottom: none;
 }
 
 .edit-hull-title {
   font-family: "Squada One", cursive;
   font-size: 175%;
   text-shadow: 0 0 5px #42f2f7;
+}
+
+.edit-hull-list-box {
+  height: 58%;
+}
+
+.edit-hull-list {
+  height: 67%;
 }
 
 .all-hulls {
@@ -263,9 +266,8 @@ body, html {
 }
 
 .edit-hull-preview {
-  border: 1px solid #2c2a4a;
-  margin-top: 15px;
-  height: 60%;
+  margin-top: 10px;
+  height: 75%;
   font-family: "Squada One", cursive;
   font-size: 25px;
   text-shadow: 0 0 2px #42f2f7;
@@ -347,7 +349,7 @@ body, html {
 }
 
 .equipment-parts-list {
-  height: 75%;
+  height: 77%;
   column-count: 2;
   column-fill: auto;
 }
