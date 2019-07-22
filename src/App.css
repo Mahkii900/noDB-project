@@ -164,6 +164,7 @@ body, html {
   color: #42f2f7;
   border-radius: 20px 10px;
   cursor: pointer;
+  box-shadow: 0 0 3px #42f2f7;
 }
 
 .edit-ship {
@@ -213,6 +214,7 @@ body, html {
 
 .edit-hull-list {
   height: 58%;
+  margin-bottom: none;
 }
 
 .edit-hull-title {
@@ -231,7 +233,7 @@ body, html {
 
 .hull-list {
   margin-left: 2%;
-  margin-top: 1%;
+  margin-top: 5px;
   width: 40%;
   background: #42f2f7;
   padding: 2px;
@@ -251,7 +253,7 @@ body, html {
 }
 
 .edit-hull-list-title {
-  margin-top: 1%;
+  margin-top: 10px;
   margin-left: 2%;
   font-family: "Squada One", cursive;
   font-size: 27px;
@@ -260,6 +262,7 @@ body, html {
 }
 
 .edit-hull-preview {
+  border: 1px solid black;
   height: 65%;
   font-family: "Squada One", cursive;
   font-size: 25px;
@@ -268,7 +271,7 @@ body, html {
 
 .edit-hull-preview li {
   list-style: none;
-  margin-top: 1%;
+  margin-top: 5px;
   margin-left: 5%;
   font-family: "Squada One", cursive;
   font-size: 25px;
@@ -324,7 +327,7 @@ body, html {
 
 .equipment-parts {
   margin: 8px;
-  height: 33%;
+  height: 25%;
 }
 
 .equipment-parts-title {

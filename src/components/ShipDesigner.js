@@ -31,7 +31,7 @@ export default class ShipDesigner extends Component {
     render() {
         const hulls  = this.props.hulls
         return(
-            <div>
+            <div className="edit-hull-list-box">
                 <div className="edit-hull-list">
                     <div className='edit-hull-list-title'>{'Hull Types (Select A Hull To See Equipment Slots)'}</div>
                     <div className='all-hulls'>

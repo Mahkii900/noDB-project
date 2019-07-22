@@ -41,9 +41,9 @@ let ships = [
 let id = 4;
 let hull = {class: "Scout",
     slots: [
-        {name: 'none', type: 'engine'},
-        {name: 'none', type: 'electrical'},
-        {name: 'none', type: 'mechanical'}
+        {name: 'engine', type: 'engine'},
+        {name: 'electrical', type: 'electrical'},
+        {name: 'mechanical', type: 'mechanical'}
     ]
 }
 

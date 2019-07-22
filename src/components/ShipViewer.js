@@ -16,6 +16,7 @@ export default class ShipViewer extends Component {
             didEdit: false,
             shipName: '',
             shipImage: '',
+            image: '',
             ship: {},
             hull: {},
             slots: []
@@ -46,7 +47,7 @@ export default class ShipViewer extends Component {
     showEdit() {
         let ships = this.props.ships
         if (!this.state.showEdit) {
-            this.setState({ship: ships[this.state.index], hull: ships[this.state.index].hull})
+            this.setState({ship: ships[this.state.index], hull: ships[this.state.index].hull, image: ships[this.state.index].image})
         }
         this.setState({editing: !this.state.editing})
         if (this.state.showParts) {
@@ -90,6 +91,11 @@ export default class ShipViewer extends Component {
         this.didEdit()
     }
 
+    changeShipImage(id, image) {
+        this.props.updateShip(id, {image: image})
+        this.didEdit()
+    }
+
     didEdit() {
         this.setState({didEdit: true})
     }
@@ -104,10 +110,11 @@ export default class ShipViewer extends Component {
 
     cancelChanges(id) {
         let ship = this.state.ship
+        let image = this.state.image
         let hull = this.state.hull
         let slots = this.state.slots
         if (this.state.didEdit) {
-            let oldShip = {name: ship.name, hull: hull}
+            let oldShip = {name: ship.name, hull: hull, image: image}
             for (let i = 0; i < oldShip.hull.slots.length; i++) {
                 for(let j = 0; j < slots.length; j++) {
                     if (oldShip.hull.slots[i].type === slots[j].type){
@@ -166,8 +173,12 @@ export default class ShipViewer extends Component {
                                     {this.state.editing ? (
                                         <div className='edit-ship-display'>
                                             <div className='change-name'>Change Ship Name: 
-                                                <input type='text' value={shipName} onChange={(e) => this.inputChangeHandler(e)}/>
+                                                <input type='text' value={shipName} onChange={(e) => this.inputShipNameHandler(e)}/>
                                                 <button onClick={() => this.changeShipName(this.state.id, shipName)}>Change Ship Name</button>
+                                            </div>
+                                            <div className='change-name'>Change Ship Image: 
+                                                <input type='text' value={this.state.shipImage} onChange={(e) => this.inputShipImageHandler(e)}/>
+                                                <button onClick={() => this.changeShipImage(this.state.id, this.state.shipImage)}>Change Ship Image</button>
                                             </div>
                                             <div className='edit-hull'>
                                                 <div className='edit-hull-title'>

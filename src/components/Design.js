@@ -16,7 +16,7 @@ export default class Ship extends Component {
         return(
             <div className='equipment-slots'>
                 <div className='equipment-list'>
-                    {this.props.slots.map(ele => {return <li key={ele.name}>{ele.name}</li>})}
+                    {this.props.slots.map(ele => {return <li key={ele.type}>{ele.name}</li>})}
                 </div>
                 <div className='button-box'>
                     <button onClick={() => this.cancelHullChanges(this.props.hull)}>Confirm Hull Change</button>
