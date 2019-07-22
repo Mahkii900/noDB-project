@@ -18,7 +18,7 @@ export default class ShipDesigner extends Component {
 
     listHulls(ele) {
         if (this.props.currentHull !== ele.class) {
-            return (<li key={ele.class} onClick={() => this.selectedHull(ele.class)}>{ele.class}</li>)
+            return (<div className='hull-list'><li key={ele.class} onClick={() => this.selectedHull(ele.class)}>{ele.class}</li></div>)
         }
     }
 
@@ -28,7 +28,9 @@ export default class ShipDesigner extends Component {
             <div>
                 <div className="edit-hull-list">
                     <div className='edit-hull-list-title'>{'Hull Types (Select A Hull To See Equipment Slots)'}</div>
-                    {hulls.map(ele => this.listHulls(ele))}
+                    <div>
+                        {hulls.map(ele => this.listHulls(ele))}
+                    </div>
                 </div>
                 {this.state.showSlots ? 
                 (<div className='edit-hull-preview'>

@@ -23,8 +23,8 @@ export default class ShipSlots extends Component {
 
     render() {
         return(
-            <div>
-                {this.props.partsType.map(ele => <li key={ele.name} onClick={() => this.cancelSlotUpdate(ele)}>{ele.name}</li>)}
+            <div className='equipment'>
+                {this.props.partsType.map(ele => <div className='equipment-part'><li key={ele.name} onClick={() => this.cancelSlotUpdate(ele)}>{ele.name}</li></div>)}
             </div>
         )
     }

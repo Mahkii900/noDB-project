@@ -56,6 +56,7 @@ body, html {
   border-radius: 10px 20px;
   margin: 3px;
   box-shadow: 0 0 4px #42f2f7;
+  cursor: pointer;
 }
 
 #add-button {
@@ -73,6 +74,7 @@ body, html {
   border: 2px solid #2c2a4a;
   border-radius: 5px;
   box-shadow: 0 0 2px #42f2f7;
+  cursor: pointer;
 }
 
 .ship-designing {
@@ -93,7 +95,7 @@ body, html {
 
 .ship-info {
   height: 100%;
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -118,6 +120,7 @@ body, html {
   margin-top: 20px;
   text-transform: capitalize;
   text-shadow: 0 0 3px #42f2f7;
+  cursor: pointer;
 }
 
 #edit-button {
@@ -132,12 +135,12 @@ body, html {
   background: #2c2a4a;
   color: #42f2f7;
   border-radius: 20px 10px;
+  cursor: pointer;
 }
 
 .edit-ship {
   display: flex;
-  border: 2px solid #2c2a4a;
-  width: 50%;
+  width: 60%;
 }
 
 .edit-ship-display {
@@ -171,6 +174,7 @@ body, html {
   margin: 3px;
   border-radius: 20px;
   box-shadow: 0 0 4px #42f2f7;
+  cursor: pointer;
 }
 
 .edit-hull {
@@ -185,13 +189,25 @@ body, html {
   text-shadow: 0 0 5px #42f2f7;
 }
 
-.edit-hull-list li{
-  list-style: none;
+.hull-list {
+  margin-left: 2%;
   margin-top: 1%;
-  margin-left: 5%;
+  width: 15%;
+  background: #42f2f7;
+  padding: 2px;
+  text-align: center;
+  font-family: 'Squada One', cursive;
+  font-size: 20px;
+  border: 2px solid #2c2a4a;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #42f2f7;
+}
+
+.hull-list li{
+  list-style: none;
   font-family: "Squada One", cursive;
   font-size: 25px;
-  text-shadow: 0 0 2px #42f2f7;
+  cursor: pointer;
 }
 
 .edit-hull-list-title {
@@ -205,6 +221,7 @@ body, html {
 
 .edit-hull-preview {
   margin-top: 5%;
+  height: 70%;
   font-family: "Squada One", cursive;
   font-size: 25px;
   text-shadow: 0 0 2px #42f2f7;
@@ -237,6 +254,17 @@ body, html {
 .equipment-slots {
   display: flex;
   justify-content: space-between;
+  height: 80%;
+}
+
+.equipment-list {
+  width: 70%;
+  column-count: 2;
+  column-fill: auto;
+}
+
+.equipment-list li {
+  list-style-type: disc;
 }
 
 .button-box {
@@ -252,4 +280,68 @@ body, html {
   font-size: 20px;
   border-radius: 20px;
   box-shadow: 0 0 4px #42f2f7;
+  cursor: pointer;
+}
+
+.equipment-parts {
+  height: 33%;
+}
+
+.equipment-parts-title {
+  font-family: "Squada One", cursive;
+  font-size: 175%;
+  text-shadow: 0 0 5px #42f2f7;
+}
+
+.slot-preview {
+  font-family: "Squada One", cursive;
+  font-size: 150%;
+  text-shadow: 0 0 5px #42f2f7;
+  margin-top: 2%;
+  margin-left: 15%;
+}
+
+.equipment-parts-list {
+  height: 75%;
+  column-count: 2;
+  column-fill: auto;
+}
+
+.equipment-part {
+  margin-top: 1%;
+  margin-left: 3%;
+  width: 20%;
+  list-style: none;
+  background: #42f2f7;
+  padding: 2px;
+  text-align: center;
+  font-family: 'Squada One', cursive;
+  font-size: 20px;
+  border: 2px solid #2c2a4a;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #42f2f7;
+  cursor: pointer;
+}
+
+.edit-button-box {
+  height: 7%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-button-box button {
+  background: #2d3047;
+  padding: 6px;
+  border: 2px #2c2a4a outset;
+  font-family: "Squada One", cursive;
+  color: #42f2f7;
+  font-size: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px #42f2f7;
+  cursor: pointer;
+}
+
+#delete-button {
+  background: red;
+  color: black;
 }

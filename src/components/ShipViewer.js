@@ -165,8 +165,9 @@ export default class ShipViewer extends Component {
                                                 shipHull={this.props.ships[this.state.index].hull}
                                             />
                                             </div>
-                                            <div>
-                                            {this.state.showParts ? <div>
+                                            <div className='equipment-parts'>
+                                                <div className='equipment-parts-title'>Change Equipment:</div>
+                                            {this.state.showParts ? <div className='equipment-parts-list'>
                                                 <ShipSlots
                                                     slots={this.props.ships[this.state.index].hull.slots}
                                                     hullClass={this.props.ships[this.state.index].hull.class}
@@ -177,11 +178,13 @@ export default class ShipViewer extends Component {
                                                     saveSlots={this.cancelSlotChanges}
                                                     edit={this.didEdit}
                                                 />
-                                                </div> : <div>Select A Slot</div>}
+                                                </div> : <div className='slot-preview'>{'>>>>Select An Equipment Slot On Left To Change<<<<'}</div>}
                                             </div>
-                                            <button onClick={() => this.showEdit()}>Save</button>
-                                            <button onClick={() => this.cancelChanges(this.state.ship.id)}>Cancel</button>
-                                            <button onClick={() => this.deleteShip()}>Delete This Ship</button>
+                                            <div className='edit-button-box'>
+                                                <button onClick={() => this.showEdit()}>Save Changes</button>
+                                                <button onClick={() => this.cancelChanges(this.state.ship.id)}>Cancel</button>
+                                                <button id='delete-button' onClick={() => this.deleteShip()}>Delete This Ship</button>
+                                            </div>
                                         </div>
                                     ): null}
                                 </div>

@@ -14,7 +14,7 @@ export default class Ship extends Component {
     render() {
         return(
             <div className='equipment-slots'>
-                <div>
+                <div className='equipment-list'>
                     {this.props.slots.map(ele => {return <li key={ele.name}>{ele.name}</li>})}
                 </div>
                 <div className='button-box'>
