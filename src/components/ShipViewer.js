@@ -177,7 +177,7 @@ export default class ShipViewer extends Component {
                                                 <button onClick={() => this.changeShipName(this.state.id, shipName)}>Change Ship Name</button>
                                             </div>
                                             <div className='change-name'>Change Ship Image: 
-                                                <input type='text' value={this.state.shipImage} onChange={(e) => this.inputShipImageHandler(e)}/>
+                                                <input type='text' value={this.state.shipImage} placeholder={'Image URL'} onChange={(e) => this.inputShipImageHandler(e)}/>
                                                 <button onClick={() => this.changeShipImage(this.state.id, this.state.shipImage)}>Change Ship Image</button>
                                             </div>
                                             <div className='edit-hull'>
